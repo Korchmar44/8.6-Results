@@ -9,15 +9,47 @@ namespace Task_2_HW_03.Services
 {
     public static class CounterSize
     {
-        public static long GetFolderSize(string folderPath)
+
+        public static bool CheckDir(string folderPath)
+        {
+            if (String.IsNullOrEmpty(folderPath))
+            {
+                return false;
+            }
+            else if (!Directory.Exists(folderPath))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public static void GetFolderSize(string folderPath)
         {
             long size = 0;
-            DirectoryInfo di = new DirectoryInfo(folderPath);
-            foreach (FileInfo fi in di.GetFiles("*", SearchOption.AllDirectories))
+
+            if (!CheckDir(folderPath))
             {
-                size += fi.Length;
+                Console.WriteLine("Директория не существует");
+                return;
             }
-            return size;
+
+            try
+            {
+                DirectoryInfo di = new DirectoryInfo(folderPath);
+                foreach (FileInfo fi in di.GetFiles("*", SearchOption.AllDirectories))
+                {
+                    size += fi.Length;
+                }
+                Console.WriteLine($"Размер папки {MyPath.ItemPath}: {size} байт");
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine($"Ошибка:{ e.Message}");
+            }
         }
     }
 }

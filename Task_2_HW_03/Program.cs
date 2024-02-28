@@ -18,7 +18,7 @@ namespace Task_2_HW_03
             MyPath.GetMyPath(path);
 
             // Выводим информацию о пути и его размере
-            Console.WriteLine($"Размер папки {MyPath.ItemPath}: {CounterSize.GetFolderSize(MyPath.ItemPath)} байт");
+            CounterSize.GetFolderSize(path);
             Console.ReadKey();
         }
     }
