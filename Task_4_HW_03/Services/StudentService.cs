@@ -9,8 +9,16 @@ using Task_4_HW_03.Models;
 
 namespace Task_4_HW_03.Services
 {
+    /// <summary>
+    /// Предоставляет методы для сохранения и чтения данных студентов в группированные двоичные файлы.
+    /// </summary>
     static class StudentService
     {
+        /// <summary>
+        /// Сохраняет список студентов в группированные двоичные файлы в указанном выходном каталоге.
+        /// </summary>
+        /// <param name="students">Список студентов, которые будут сохранены.</param>
+        /// <param name="outputDirectory">Каталог вывода, где будут сохранены группированные двоичные файлы.</param>
         public static void SaveStudentsToGroupedBinaryFiles(List<Student> students, string outputDirectory)
         {
             if (!Directory.Exists(outputDirectory))
@@ -29,6 +37,11 @@ namespace Task_4_HW_03.Services
             }
         }
 
+        /// <summary>
+        /// Считывает список студентов из двоичного файла.
+        /// </summary>
+        /// <param name="filePath">Путь к двоичному файлу.</param>
+        /// <returns>Список студентов, считанный из двоичного файла, или null, если файл не существует.</returns>
         private static List<Student> ReadStudentsFromBinaryFile(string filePath)
         {
             List<Student> students = null;
@@ -45,6 +58,10 @@ namespace Task_4_HW_03.Services
             return students;
         }
 
+        /// <summary>
+        /// Выводит содержимое двоичного файла, содержащего данные студентов.
+        /// </summary>
+        /// <param name="filePath">Путь к двоичному файлу.</param>
         public static void PrintBinFile(string filePath)
         {
             List<Student> students = ReadStudentsFromBinaryFile(filePath);

@@ -7,8 +7,15 @@ using System.Threading.Tasks;
 
 namespace Task_4_HW_03.Services
 {
+    /// <summary>
+    /// Предоставляет методы для работы с каталогами.
+    /// </summary>
     static class DirectoryService
     {
+        /// <summary>
+        /// Создает новый каталог или очищает существующий каталог.
+        /// </summary>
+        /// <param name="directoryName">Имя каталога для создания или очистки.</param>
         public static void CreateOrClearDirectory(string directoryName)
         {
             try
@@ -24,12 +31,12 @@ namespace Task_4_HW_03.Services
                     {
                         subDirectory.Delete(true);
                     }
-                    Console.WriteLine($"Директория {directoryName} была создана ранее и успешно очищена");
+                    Console.WriteLine($"Каталог {directoryName} был создан ранее и успешно очищен");
                 }
                 else
                 {
                     Directory.CreateDirectory(directoryName);
-                    Console.WriteLine($"Директория {directoryName} успешно создана");
+                    Console.WriteLine($"Каталог {directoryName} успешно создан");
                 }
             }
             catch (Exception e)
